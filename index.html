@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    :root {
+        --primary: #ffffff;
+        --secondary: #ffffff;
+        --tertiary: #ffffff;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .content {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+
+        height: 100vh;
+        margin: 0 128px;
+    }
+    .content__card {
+        width: 350px;
+        height: 240px;
+        border: 1px solid black;
+        border-radius: 4px;
+    }
+    .degradato {
+        transition: --primary 0.8s, --secondary 0.8s, --tertiary 0.8s;
+    
+        background: 
+            linear-gradient( var(--primary), transparent),
+            linear-gradient(45deg, var(--secondary), transparent),
+            linear-gradient(-45deg, var(--tertiary), transparent)
+        ;
+    }
+    
+    .content__card--web:hover {
+        --primary: #24ff91;
+        --secondary: #1ddee5;
+        --tertiary: #1079cf;
+    }
+    
+    .content__card--movil:hover {
+        --primary: #ffd924;
+        --secondary: #e5961d;
+        --tertiary: #cf4310;
+    }
+</style>
+<body>
+    <section class="content">
+        <div id="card" class="content__card content__card--web degradato">
+            
+        </div>
+        <div id="card" class="content__card content__card--movil degradato"></div>
+        <button id="button">dale con todo papi!</button>
+    </section>
+    <script>
+        window.CSS.registerProperty({
+            name: '--primary',
+            syntax: '<color>',
+            inherits: 'true',
+            initialValue: '#ffffff'
+        });
+        window.CSS.registerProperty({
+            name: '--secondary',
+            syntax: '<color>',
+            inherits: true,
+            initialValue: '#ffffff'
+        });
+        window.CSS.registerProperty({
+            name: '--tertiary',
+            syntax: '<color>',
+            inherits: true,
+            initialValue: '#ffffff'
+        });
+        button.addEventListener('click', () => {
+            updateProperties(['#24ff91','#1ddee5','#1079cf']);
+        });
+        
+
+        function updateProperties(colors) {
+            document.div.style.setProperty('--primary', colors[0]);
+            document.div.style.setProperty('--secondary', colors[1]);
+            document.div.style.setProperty('--tertiary', colors[2]);
+        }   
+    </script>
+</body>
+</html>
